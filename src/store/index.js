@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import SignUp from './modules/signup'
-import SignIn from './modules/signin'
+import Auth from './modules/auth'
+import BrandsAndModels from './modules/brands_and_models'
+import Vehicles from './modules/vehicles'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   modules: {
-    SignUp,
-    SignIn
+    Auth,
+    BrandsAndModels,
+    Vehicles
   },
   state: {
     user: null,
