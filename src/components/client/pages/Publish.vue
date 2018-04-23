@@ -1,20 +1,18 @@
 <template>
-  <v-app>
-    <router-view></router-view>
+  <section>
     <router-view name="navbar"></router-view>
-    <router-view name="slider"></router-view>
     <router-view name="filter"></router-view>
-    <router-view name="lists"></router-view>
+    <router-view name="car"></router-view>
     <router-view name="footer"></router-view>
-  </v-app>
+  </section>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
-  name: 'App'
+
 }
 </script>
+
+<style>
+
+</style>
