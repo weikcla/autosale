@@ -16,6 +16,7 @@ import Footer from '@/components/client/layouts/Footer.vue'
 // Pages Dashboard Side
 import Dashboard from '@/components/dashboard/pages/Home.vue'
 import SignUp from '@/components/dashboard/pages/SignUp.vue'
+import SignIn from '@/components/dashboard/pages/SignIn.vue'
 import Vehicles from '@/components/dashboard/pages/Vehicles.vue'
 import BrandsAndModels from '@/components/dashboard/pages/BrandsAndModels.vue'
 import Atributes from '@/components/dashboard/pages/Atributes.vue'
@@ -67,6 +68,11 @@ export default new Router({
           path: 'signup',
           name: 'signup',
           component: SignUp
+        },
+        {
+          path: 'signin',
+          name: 'signin',
+          component: SignIn
         },
         {
           path: 'vehicles',

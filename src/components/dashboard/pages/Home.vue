@@ -1,15 +1,7 @@
 <template>
   <section>
     <h1>Dashboard</h1>
-    <router-link :to="{name: 'dashboard'}">Home</router-link>
-    <div v-if="!auth">
-      <router-link :to="{name: 'signup'}">Sign Up</router-link>
-    </div>
-    <div else>
-      <router-link :to="{name: 'brands_and_models'}">Brand's and Model's</router-link>
-      <router-link :to="{name: 'vehicles'}">Vehicles</router-link>
-      <router-link :to="{name: 'atributes'}">Atributes</router-link>
-    </div>
+    <router-link v-for="(item, key) in navItems" :key="key" :to="{name: item.nameView}">{{item.name}}</router-link>
     <br>
     <hr>
     <router-view></router-view>
@@ -17,7 +9,32 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapState(['isAuthenticated']),
+    navItems () {
+      let navItems = [
+        {nameView: 'dashboard', name: 'Home'},
+        {nameView: 'signin', name: 'Sign In'},
+        {nameView: 'signup', name: 'Sign Up'}
+      ]
+      if (this.isAuthenticated) {
+        navItems = [
+          {nameView: 'dashboard', name: 'Home'},
+          {nameView: 'vehicles', name: 'Vehicles'},
+          {nameView: 'brands_and_models', name: `Brand's and Model's`},
+          {nameView: 'atributes', name: 'Atributes'}
+        ]
+      }
+      return navItems
+    }
+  }
 }
 </script>
 
