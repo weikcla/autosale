@@ -4,12 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import {store} from './store'
 import router from './router'
+import * as firebase from 'firebase'
 import {
   Vuetify,
   VApp,
   VNavigationDrawer,
   VFooter,
+  VDialog,
   VList,
+  VCard,
+  VTextField,
+  VSelect,
   VBtn,
   VIcon,
   VGrid,
@@ -23,7 +28,11 @@ Vue.use(Vuetify, {
     VApp,
     VNavigationDrawer,
     VFooter,
+    VDialog,
     VList,
+    VCard,
+    VTextField,
+    VSelect,
     VBtn,
     VIcon,
     VGrid,
@@ -40,5 +49,16 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyAr84IQNgdwn6Fc-9mRpg_1K1YrE2TgONc',
+      authDomain: 'auto-sale-1edb1.firebaseapp.com',
+      databaseURL: 'https://auto-sale-1edb1.firebaseio.com',
+      projectId: 'auto-sale-1edb1',
+      storageBucket: 'auto-sale-1edb1.appspot.com',
+      messagingSenderId: '599623091336'
+
+    })
+  }
 })
