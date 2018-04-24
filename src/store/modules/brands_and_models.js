@@ -41,6 +41,30 @@ const actions = {
       .catch((error) => {
         console.log(error)
       })
+  },
+
+  updateBrand ({commit}, payload) {
+    const brand = {
+      id: payload.id,
+      name: payload.name
+    }
+    firebase.database().ref('/brands').child(brand.id).update({
+      name: brand.name
+    })
+      .then((data) => {
+        commit('setBrand', brand.name)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
+
+  removeBrand ({commit}, payload) {
+    const brand = payload
+    firebase.database().ref('/brands').child(brand).remove()
+      .catch((error) => {
+        console.log(error)
+      })
   }
 }
 
