@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Auth from './modules/auth'
-import BrandsAndModels from './modules/brands_and_models'
+import Brands from './modules/brands'
+import Models from './modules/models'
 import Vehicles from './modules/vehicles'
 
 Vue.use(Vuex)
@@ -9,7 +10,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   modules: {
     Auth,
-    BrandsAndModels,
+    Brands,
+    Models,
     Vehicles
   },
   state: {

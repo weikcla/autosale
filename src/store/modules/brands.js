@@ -13,26 +13,22 @@ const getters = {
 
 const actions = {
   loadBrands ({commit}) {
-    firebase.database().ref('/brands').once('value')
-      .then((data) => {
-        const brands = []
-        const obj = data.val()
-        for (let key in obj) {
-          brands.push({
-            id: key,
-            name: obj[key].name
-          })
-        }
-        commit('setLoadedBrands', brands)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    firebase.database().ref('/brands').on('value', (snapshot) => {
+      const brands = []
+      const obj = snapshot.val()
+      for (let key in obj) {
+        brands.push({
+          id: key,
+          name: obj[key].name
+        })
+      }
+      commit('setLoadedBrands', brands)
+    })
   },
 
   createBrand ({commit}, payload) {
     const brand = {
-      name: payload.brand
+      name: payload.name
     }
     firebase.database().ref('/brands').push(brand)
       .then((data) => {
