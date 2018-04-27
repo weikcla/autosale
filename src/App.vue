@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-content>
-      <v-toolbar dark color="primary" dense>
+      <v-toolbar dark color="primary darken-1" dense>
         <v-toolbar-title class="white--text">
           <v-btn flat :to="{name: 'home'}" exact>
             <v-icon left>home</v-icon>
@@ -9,12 +9,12 @@
           </v-btn>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items >
+        <v-toolbar-items>
           <v-btn 
             v-for="(item, key) in navItems" 
             :key="key" 
             :to="{name: item.nameView}" 
-            exact 
+            exact
             flat>
             {{ item.name }}
             <v-icon right>
@@ -29,14 +29,14 @@
           </v-btn>
         </v-toolbar-items>
       </v-toolbar>
-      <v-container fluid fill-height>
+      <section>
         <router-view></router-view>
         <router-view name="navbar"></router-view>
         <router-view name="slider"></router-view>
         <router-view name="filter"></router-view>
         <router-view name="lists"></router-view>
         <router-view name="footer"></router-view>
-      </v-container>
+      </section>
     </v-content>
   </v-app>
 </template>

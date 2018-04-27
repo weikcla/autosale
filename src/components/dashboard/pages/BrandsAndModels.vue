@@ -1,8 +1,8 @@
 <template>
   <v-container grid-list-xl>
-    <v-layout row text-center>
-      <v-flex xs6>
-        <v-card color="blue-grey lighten-5">
+    <v-layout row wrap text-center>
+      <v-flex xs12 sm6>
+        <v-card color="blue-grey lighten-3">
           <v-container>
             <v-layout>
               <v-flex>
@@ -39,8 +39,8 @@
           </v-container>
         </v-card>
       </v-flex>
-      <v-flex xs6>
-        <v-card color="blue-grey lighten-5">
+      <v-flex xs12 sm6>
+        <v-card color="blue-grey lighten-3">
           <v-container>
             <v-layout>
               <v-flex>
@@ -102,7 +102,7 @@
                       item-text="name"
                       item-value="key"
                       v-model="model.brand"
-                      :disabled="model.id"
+                      :disabled="model.id !== null"
                     ></v-select>
                   </v-flex>
                   <v-spacer></v-spacer>
@@ -141,7 +141,10 @@ export default {
         id: null
       },
       model: {
-        brand: '',
+        brand: {
+          name: null,
+          id: null
+        },
         name: null,
         id: null
       },
@@ -191,6 +194,7 @@ export default {
         this.isBrand = true
         this.modal = true
       } else {
+        this.brand.name = item.brandName
         this.model.brand = item.brandId
         this.model.name = item.modelName
         this.model.id = item.modelId || null
@@ -207,6 +211,18 @@ export default {
         confirm('Are you sure you want to delete this model "' + item.modelName + '"?') && this.removeModel(this.model)
       }
     },
+    save () {
+      if (this.brand.id !== null && this.isBrand === true) {
+        this.updateBrand(this.brand)
+      } else if (this.isBrand === true) {
+        this.createBrand(this.brand)
+      } else if (this.model.id !== null) {
+        this.updateModel(this.model)
+      } else {
+        this.createModel(this.model)
+      }
+      this.close()
+    },
     close () {
       this.modal = false
       setTimeout(() => {
@@ -220,18 +236,6 @@ export default {
           id: null
         }
       }, 500)
-    },
-    save () {
-      if (this.brand.id !== null && this.isBrand === true) {
-        this.updateBrand(this.brand)
-      } else if (this.isBrand === true) {
-        this.createBrand(this.brand)
-      } else if (this.model.id !== null) {
-        this.updateModel(this.model)
-      } else {
-        this.createModel(this.model)
-      }
-      this.close()
     },
     pages (pagination) {
       if (pagination.rowsPerPage == null ||

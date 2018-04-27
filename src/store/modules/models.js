@@ -63,10 +63,8 @@ const actions = {
 
   removeModel ({commit}, payload) {
     const brandId = payload.brand
-    const model = {
-      id: payload.id
-    }
-    firebase.database().ref('/brands').child(brandId).child('models').child(model.id).remove()
+    const model = payload.id
+    firebase.database().ref('/brands').child(brandId).child('models').child(model).remove()
       .catch((error) => {
         console.log(error)
       })
