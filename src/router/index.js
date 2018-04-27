@@ -18,8 +18,7 @@ import Dashboard from '@/components/dashboard/pages/Home.vue'
 import SignUp from '@/components/dashboard/pages/SignUp.vue'
 import SignIn from '@/components/dashboard/pages/SignIn.vue'
 import Vehicles from '@/components/dashboard/pages/Vehicles.vue'
-import Brands from '@/components/dashboard/pages/Brands.vue'
-import Models from '@/components/dashboard/pages/Models.vue'
+import BrandsAndModels from '@/components/dashboard/pages/BrandsAndModels.vue'
 import Atributes from '@/components/dashboard/pages/Atributes.vue'
 
 // Layouts Dashboard Side
@@ -92,14 +91,9 @@ export default new Router({
           ]
         },
         {
-          path: 'brands',
-          name: 'brands',
-          component: Brands
-        },
-        {
-          path: 'models',
-          name: 'models',
-          component: Models
+          path: 'brands_and_models',
+          name: 'brands_and_models',
+          component: BrandsAndModels
         },
         {
           path: 'atributes',

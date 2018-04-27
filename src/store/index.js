@@ -23,6 +23,17 @@ export const store = new Vuex.Store({
       state.user = payload
       state.isAuthenticated = true
     }
+    // rules: {
+    //   required: (value) => !!value || 'This field is required.',
+    //   numeric: (value) => {
+    //       const pattern =  /^[0-9]+$/
+    //       return pattern.test(value) || 'This field only numbers.'
+    //   },
+    //   email: (value) => {
+    //     const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    //     return pattern.test(value) || 'Invalid e-mail.'
+    //   }
+    // }
   },
   getters: {
     user (state) {

@@ -6,7 +6,7 @@
           <v-card>
             <v-card-text>
               <v-container grid-list-md>
-                <form @submit.prevent="onSignIn({email: email, password: password})">
+                <form @submit.prevent="signUserIn({email: email, password: password})">
                   <v-layout wrap>
                     <v-flex xs12>
                       <v-text-field
@@ -55,15 +55,17 @@ export default {
       password: ''
     }
   },
-  methods: mapActions({onSignIn: 'signUserIn'}),
+
+  methods: mapActions(['signUserIn']),
+
   computed: {
     ...mapGetters(['user'])
   },
+
   watch: {
     user (value) {
       if (value !== null && value !== undefined) {
         this.$router.push('/dashboard')
-        console.log(value)
       }
     }
   }

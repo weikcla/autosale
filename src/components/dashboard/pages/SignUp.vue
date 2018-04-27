@@ -6,7 +6,7 @@
           <v-card>
             <v-card-text>
               <v-container grid-list-md>
-                <form @submit.prevent="onSignUp({email: email, password: password})">
+                <form @submit.prevent="signUserUp({email: email, password: password})">
                   <v-layout wrap>
                     <v-flex xs12>
                       <v-text-field
@@ -69,13 +69,16 @@ export default {
       confirmPassword: ''
     }
   },
-  methods: mapActions({onSignUp: 'signUserUp'}),
+
+  methods: mapActions(['signUserUp']),
+
   computed: {
     ...mapGetters(['user']),
     comparedPasswords () {
       return this.password !== this.confirmPassword ? 'Passwords do not match' : ''
     }
   },
+
   watch: {
     user (value) {
       if (value !== null && value !== undefined) {
