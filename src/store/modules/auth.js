@@ -32,6 +32,17 @@ const actions = {
           console.log(error)
         }
       )
+  },
+  checkAuth ({commit}, payload) {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        commit('setUser', {id: user.uid})
+      }
+    })
+  },
+  logOut ({commit}) {
+    firebase.auth().signOut()
+    commit('setUser', null)
   }
 }
 

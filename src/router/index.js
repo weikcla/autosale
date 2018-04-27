@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AuthGuard from '@/router/auth_guard'
 
 // Pages Client Side
 import Publish from '@/components/client/pages/Publish.vue'
@@ -60,20 +61,20 @@ export default new Router({
       ]
     },
     {
+      path: '/signup',
+      name: 'signup',
+      component: SignUp
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LogIn
+    },
+    {
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
       children: [
-        {
-          path: 'signup',
-          name: 'signup',
-          component: SignUp
-        },
-        {
-          path: 'login',
-          name: 'login',
-          component: LogIn
-        },
         {
           path: 'vehicles',
           component: Vehicles,
@@ -100,7 +101,8 @@ export default new Router({
           name: 'atributes',
           component: Atributes
         }
-      ]
+      ],
+      beforeEnter: AuthGuard
     },
     {path: '*', component: NotFound}
   ]

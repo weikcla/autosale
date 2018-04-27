@@ -9,11 +9,22 @@
           </v-btn>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items v-for="(item, key) in navItems" :key="key">
-          <v-btn flat :to="{name: item.nameView}" exact>
+        <v-toolbar-items >
+          <v-btn 
+            v-for="(item, key) in navItems" 
+            :key="key" 
+            :to="{name: item.nameView}" 
+            exact 
+            flat>
             {{ item.name }}
             <v-icon right>
               {{ item.icon }}
+            </v-icon>
+          </v-btn>
+          <v-btn v-if="isAuthenticated" @click="onLogOut()" flat>
+            Log Out
+            <v-icon right>
+              exit_to_app
             </v-icon>
           </v-btn>
         </v-toolbar-items>
@@ -34,10 +45,23 @@
 import {mapState} from 'vuex'
 export default {
   name: 'App',
+
+  created () {
+    this.$store.dispatch('checkAuth')
+  },
+
   data () {
     return {
     }
   },
+
+  methods: {
+    onLogOut () {
+      this.$store.dispatch('logOut')
+      this.$router.push({name: 'home'})
+    }
+  },
+
   computed: {
     ...mapState(['isAuthenticated']),
     navItems () {

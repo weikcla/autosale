@@ -21,7 +21,11 @@ export const store = new Vuex.Store({
   mutations: {
     setUser (state, payload) {
       state.user = payload
-      state.isAuthenticated = true
+      if (payload !== null) {
+        state.isAuthenticated = true
+      } else {
+        state.isAuthenticated = false
+      }
     }
     // rules: {
     //   required: (value) => !!value || 'This field is required.',
