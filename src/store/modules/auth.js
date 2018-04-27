@@ -1,7 +1,7 @@
 import * as firebase from 'firebase'
 
 const actions = {
-  signUserIn ({commit}, payload) {
+  logUserIn ({commit}, payload) {
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(
         user => {

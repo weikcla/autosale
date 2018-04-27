@@ -4,7 +4,7 @@
       <v-flex xs12 sm8 md4>
         <v-card class="elevation-12">
           <v-toolbar dark color="primary">
-            <v-toolbar-title>Sign Up</v-toolbar-title>
+            <v-toolbar-title>Log in</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form>
@@ -25,22 +25,11 @@
                 :type="p1 ? 'password' : 'text'"
                 prepend-icon="lock"
               ></v-text-field>
-              <v-text-field
-                name="confirmPassword"
-                label="Confirm Password"
-                id="confirmPassword"
-                v-model="confirmPassword"
-                :rules="[comparedPasswords]"
-                :append-icon="p2 ? 'visibility_off' : 'visibility'"
-                :append-icon-cb="() => (p2 = !p2)"
-                :type="p2 ? 'password' : 'text'"
-                prepend-icon="lock"
-                ></v-text-field>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="signUserUp({email: email, password: password})">Sign Up</v-btn>
+            <v-btn color="primary" @click="logUserIn({email: email, password: password})">Login</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -54,20 +43,15 @@ export default {
   data () {
     return {
       p1: true,
-      p2: true,
       email: '',
-      password: '',
-      confirmPassword: ''
+      password: ''
     }
   },
 
-  methods: mapActions(['signUserUp']),
+  methods: mapActions(['logUserIn']),
 
   computed: {
-    ...mapGetters(['user']),
-    comparedPasswords () {
-      return this.password !== this.confirmPassword ? 'Passwords do not match' : ''
-    }
+    ...mapGetters(['user'])
   },
 
   watch: {

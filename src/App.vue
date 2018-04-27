@@ -1,13 +1,18 @@
 <template>
   <v-app>
     <v-content>
-      <v-toolbar dark dense>
-        <v-toolbar-title>Auto Sale</v-toolbar-title>
+      <v-toolbar dark color="primary" dense>
+        <v-toolbar-title class="white--text">
+          <v-btn flat :to="{name: 'home'}" exact>
+            <v-icon left>home</v-icon>
+            Auto Sale
+          </v-btn>
+        </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items v-for="(item, key) in navItems" :key="key">
           <v-btn flat :to="{name: item.nameView}" exact>
             {{ item.name }}
-            <v-icon>
+            <v-icon right>
               {{ item.icon }}
             </v-icon>
           </v-btn>
@@ -37,15 +42,14 @@ export default {
     ...mapState(['isAuthenticated']),
     navItems () {
       let navItems = [
-        {nameView: 'dashboard', name: 'Home', icon: 'home'},
-        {nameView: 'signin', name: 'Sign In', icon: 'lock_open'},
+        {nameView: 'login', name: 'Log In', icon: 'lock_open'},
         {nameView: 'signup', name: 'Sign Up', icon: 'perm_identity'}
       ]
       if (this.isAuthenticated) {
         navItems = [
-          {nameView: 'dashboard', name: 'Home', icon: 'home'},
+          {nameView: 'dashboard', name: 'Dashboard', icon: 'dashboard'},
           {nameView: 'vehicles', name: 'Vehicles', icon: 'directions_car'},
-          {nameView: 'brands_and_models', name: `Brands and Models`, icon: 'home'},
+          {nameView: 'brands_and_models', name: `Brands and Models`, icon: 'style'},
           {nameView: 'atributes', name: 'Atributes', icon: 'apps'}
         ]
       }

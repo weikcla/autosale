@@ -16,7 +16,7 @@ import Footer from '@/components/client/layouts/Footer.vue'
 // Pages Dashboard Side
 import Dashboard from '@/components/dashboard/pages/Home.vue'
 import SignUp from '@/components/dashboard/pages/SignUp.vue'
-import SignIn from '@/components/dashboard/pages/SignIn.vue'
+import LogIn from '@/components/dashboard/pages/LogIn.vue'
 import Vehicles from '@/components/dashboard/pages/Vehicles.vue'
 import BrandsAndModels from '@/components/dashboard/pages/BrandsAndModels.vue'
 import Atributes from '@/components/dashboard/pages/Atributes.vue'
@@ -34,7 +34,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       components: {
         navbar: Navbar,
         slider: Slider,
@@ -70,9 +70,9 @@ export default new Router({
           component: SignUp
         },
         {
-          path: 'signin',
-          name: 'signin',
-          component: SignIn
+          path: 'login',
+          name: 'login',
+          component: LogIn
         },
         {
           path: 'vehicles',
